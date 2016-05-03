@@ -34,7 +34,7 @@ public class CoolWeatherDB {
 
 	}
 
-	private void saveProvince(Province province) {
+	public void saveProvince(Province province) {
 
 		if (province != null) {
 

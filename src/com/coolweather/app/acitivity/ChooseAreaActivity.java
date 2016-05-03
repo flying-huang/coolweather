@@ -25,9 +25,8 @@ public class ChooseAreaActivity extends Activity {
 
 		coolWeatherDB = CoolWeatherDB.getInstance(ChooseAreaActivity.this);
 
-		
-		
-		
+		queryFromServer("", "province");
+
 	}
 
 	private void queryFromServer(final String code, final String type) {
@@ -45,8 +44,34 @@ public class ChooseAreaActivity extends Activity {
 			@Override
 			public void onFinish(String response) {
 
-				
-				
+				boolean result = false;
+				if ("province".equals(type)) {
+
+					result = HttpUtil.handleProvincesResponse(coolWeatherDB, response);
+
+				} else if ("city".equals(type)) {
+
+					result = HttpUtil.handleCitiesResponse(coolWeatherDB, response, 1);
+
+				} else if ("county".equals(type)) {
+
+					result = HttpUtil.handleCountiesResponse(coolWeatherDB, response, 1);
+
+				}
+
+				if (result) {
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+
+							
+			
+						}
+					});
+
+				}
+
 			}
 
 			@Override
@@ -84,4 +109,13 @@ public class ChooseAreaActivity extends Activity {
 
 	}
 
+	
+	@Override
+	public void onBackPressed() {
+	
+	
+		
+		
+		
+	}
 }
