@@ -151,7 +151,6 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			intent.putExtra("from_weather_activity", true);
 			startActivity(intent);
 			finish();
-
 			break;
 		case R.id.refresh_weather:
 			publishText.setText("Í¬²½ÖÐ...");
@@ -181,6 +180,10 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		
+		Intent intent=new Intent(this, WeatherActivity.class);
+		
+		
 	}
 
 }
